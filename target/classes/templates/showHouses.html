@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Adress</title>
+    <style type="text/css">
+        TABLE {
+            width: 600px;
+            border: 4px double black;
+            border-collapse: collapse;
+        }
+        TD, TH {
+            border: 1px solid black;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<div align="center">
+    <h2>List of houses</h2>
+    <table>
+        <thead style="background: #C0C0C0">
+            <tr>
+                <th>id</th>
+                <th>street_name</th>
+                <th>type</th>
+                <th>number</th>
+                <th>liter</th>
+                <th>korpus</th>
+            </tr>
+        </thead>
+        <tbody style="background: #FFE4C4">
+            <tr th:each="house : ${houses}">
+                <td th:text="${house.house_id}">id</td>
+                <td th:text="${house.street_id.name}">id</td>
+                <td th:text="${house.street_id.type}">id</td>
+                <td th:text="${house.number}">number</td>
+                <td th:text="${house.liter}">liter</td>
+                <td th:text="${house.korpus}">korpus</td>
+                <td><a th:href="@{deleteHouse/{id}(id=${house.house_id})}">Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <form action="/addHouse">
+        <button>Добавить Дом</button>
+    </form>
+</div>
+</body>
+</html>

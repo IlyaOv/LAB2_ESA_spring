@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>AddData</title>
+    <style type="text/css">
+        .block1 {
+            background: #DCDCDC;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="block1">
+    <h3>Добавить дом</h3><br>
+    <form th:action="@{/addHouse}" th:object="${house}" method="post">
+        <label for="id">ID:</label><br>
+        <input type="text" th:field="*{house_id}" id="id"><br>
+        <label>Улица:</label><br>
+        <select th:field="*{street_id}" class="form-control">
+            <option th:each="street_id: ${streets}" th:value="${street_id.street_id}" th:text="${street_id.name}"></option>
+        </select><br>
+        <label for="number">Номер дома:</label><br>
+        <input type="text" th:field="*{number}" id="number"><br>
+        <label for="liter">Литера:</label><br>
+        <input type="text" th:field="*{liter}" id="liter"><br>
+        <label for="korpus">Корпус:</label><br>
+        <input type="text" th:field="*{korpus}" id="korpus"><br>
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+</body>
+</html>
